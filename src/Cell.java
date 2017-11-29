@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 
 //Cell Class
@@ -16,7 +18,7 @@ public class Cell {
 		this.x = x;
 		this.y = y;
 	}
-	public void tick() {
+	public void tick(ArrayList<Cell> cells) {
 		this.energy-=this.consumption;
 	}
 

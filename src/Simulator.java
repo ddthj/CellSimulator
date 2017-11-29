@@ -10,15 +10,24 @@ public class Simulator {
 	
 	public int status = 0; //Paused/Playing/Editing, 0,1,-1 respectively 
 	public ArrayList<Organism> organisms;
+	public Organism editing;
 	IO io = new IO();
 	
 	
 	
 	public void tick() {
-		//1 - tick organisms
-		//2 - remove dead organisms
-		//3 - detect collisions and adjust organism velocities
+		ArrayList<Organism> temp = new ArrayList<Organism>();
+		for(int i = 0; i < this.organisms.size(); i++){
+			if (this.organisms.get(i).alive == true){
+				temp.add(this.organisms.get(i));
+			}
+		}
+		for (int j = 0; j < temp.size(); j ++ ){
+			temp.get(j).tick();
+		}
 		
+		organisms = temp;
+		//3 - detect collisions and adjust organism velocities	
 	}
 	
 	
@@ -35,6 +44,14 @@ public class Simulator {
 	}
 	public void saveState() {
 		io.write(organisms, "Default");
+	}
+	
+	public void loadorg(String name){
+		editing = io.loadorg(name);
+		
+	}
+	public void saveorg(Organism temp, String name){
+		io.saveorg(temp, name);		
 	}
 	
 	
