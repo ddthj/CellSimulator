@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 
-//Simulator Class
-//Manages the simulation of the organisms 
+//Simulator.java Class
+//
+//
+// The Simulator Class is used to handle all the organisms that could be in a simulation
+// This class is also what the GUI eventhandlers point to so that the user can control the program
 
-//TODO - finish tick() and methods for reading/writing individual organisms
-//TODO - write methods for the editor state that the GUI can call
 
 public class Simulator {
 	
@@ -47,13 +48,17 @@ public class Simulator {
 	}
 	
 	public void loadorg(String name){
-		editing = io.loadorg(name);
-		
+		editing = io.loadorg(name);	
 	}
-	public void saveorg(Organism temp, String name){
-		io.saveorg(temp, name);		
+	public void saveorg(String name){
+		io.saveorg(editing, name);		
 	}
-	
-	
-
+	public void changeState() {
+		if (this.status >= 0) {
+			this.status = -1;
+		}
+		else {
+			this.status = 0;
+		}
+	}
 }

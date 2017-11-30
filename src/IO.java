@@ -8,12 +8,14 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 
-//IO Class
-//Tucks away the mess of reading/writing objects from/to files
-//Specifically manages Simulation States and individual organisms
+//IO.java Class
+//
+//
+// The IO class tucks away the mess of reading/writing objects from/to files
+// Specifically this manages simulation states and individual organisms
 
-//TODO - read/write individual organisms
-
+//TODO - make organism implement serializable so that it can be saved to a file properly (?)
+//TODO - make new files if the existing ones don't
 
 public class IO {
 	@SuppressWarnings("unchecked")
