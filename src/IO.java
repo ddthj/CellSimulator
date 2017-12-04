@@ -14,13 +14,16 @@ import java.util.ArrayList;
 // The IO class tucks away the mess of reading/writing objects from/to files
 // Specifically this manages simulation states and individual organisms
 
-//TODO - make organism implement serializable so that it can be saved to a file properly (?)
+//TODO - make organism implement serializable so that it can be saved to a file properly (?) (actually might have been fixed)
 //TODO - make new files if the existing ones don't
+
+//TODO - figure out how to fix the not-so-random random errors
 
 public class IO {
 	@SuppressWarnings("unchecked")
 	
 	public Organism loadorg(String name){
+		name += ".org";
 		Organism temp = new Organism();
 		
 		FileInputStream fin = null;
@@ -54,6 +57,7 @@ public class IO {
 	}
 	
 	public void saveorg(Organism temp, String name){
+		name += ".org";
 		FileOutputStream fos;
 		try {
 			fos = new FileOutputStream(new File(name));
@@ -71,6 +75,7 @@ public class IO {
 	
 	
 	public ArrayList<Organism> read(String name){ //read organisms (Simulation State) From file
+		name += ".state";
 		ArrayList<Organism> temp = new ArrayList<Organism>();
 		
 		FileInputStream fin = null;
@@ -105,6 +110,7 @@ public class IO {
 	
 	
 	public void write(ArrayList<Organism> temp, String name) { //write organisms (Simulation State) to file
+		name += ".state";
 		FileOutputStream fos;
 		try {
 			fos = new FileOutputStream(new File(name));

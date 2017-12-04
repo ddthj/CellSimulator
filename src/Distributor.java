@@ -23,19 +23,19 @@ public class Distributor extends Cell{
 		}
 		//First pass find out the total energy of all cells surrounding the distributor (and how many cells are there)
 		for(int i=0;i<cells.size();i++) {
-			if(cells.get(i).x - 1 == this.x) {
+			if(cells.get(i).x - 1 == this.x && cells.get(i).y == this.y) {
 				sum += cells.get(i).energy;
 				num++;
 			}
-			if(cells.get(i).x + 1 == this.x) {
+			if(cells.get(i).x + 1 == this.x  && cells.get(i).y == this.y) {
 				sum += cells.get(i).energy;
 				num++;
 			}
-			if(cells.get(i).y + 1 == this.y) {
+			if(cells.get(i).y + 1 == this.y  && cells.get(i).x == this.x) {
 				sum += cells.get(i).energy;
 				num++;
 			}
-			if(cells.get(i).y - 1 == this.y) {
+			if(cells.get(i).y - 1 == this.y && cells.get(i).x == this.x) {
 				sum += cells.get(i).energy;
 				num++;
 			}
@@ -49,25 +49,25 @@ public class Distributor extends Cell{
 			this.energy -= (average - this.energy);
 		}
 		for(int i=0;i<cells.size();i++) {
-			if(cells.get(i).x - 1 == this.x) {
+			if(cells.get(i).x - 1 == this.x && cells.get(i).y == this.y) {
 				if (cells.get(i).energy > average) {
 					extra += (average - cells.get(i).energy);
 					cells.get(i).energy -= (average - cells.get(i).energy);
 				}
 			}
-			if(cells.get(i).x + 1 == this.x) {
+			if(cells.get(i).x + 1 == this.x && cells.get(i).y == this.y) {
 				if (cells.get(i).energy > average) {
 					extra += (average - cells.get(i).energy);
 					cells.get(i).energy -= (average - cells.get(i).energy);
 				}
 			}
-			if(cells.get(i).y + 1 == this.y) {
+			if(cells.get(i).y + 1 == this.y && cells.get(i).x == this.x) {
 				if (cells.get(i).energy > average) {
 					extra += (average - cells.get(i).energy);
 					cells.get(i).energy -= (average - cells.get(i).energy);
 				}
 			}
-			if(cells.get(i).y - 1 == this.y) {
+			if(cells.get(i).y - 1 == this.y && cells.get(i).x == this.x) {
 				if (cells.get(i).energy > average) {
 					extra += (average - cells.get(i).energy);
 					cells.get(i).energy -= (average - cells.get(i).energy);
@@ -78,25 +78,25 @@ public class Distributor extends Cell{
 		//third pass adds the extra energy back to the cells that are below average until there is no extra energy left
 		while (extra > 0) {
 			for(int i=0;i<cells.size();i++) {
-				if(cells.get(i).x - 1 == this.x && extra > 0) {
+				if(cells.get(i).x - 1 == this.x && extra > 0 && cells.get(i).y == this.y) {
 					if (cells.get(i).energy < average) {
 						extra -= 1;
 						cells.get(i).energy += 1;
 					}
 				}
-				if(cells.get(i).x + 1 == this.x && extra > 0) {
+				if(cells.get(i).x + 1 == this.x && extra > 0 && cells.get(i).y == this.y) {
 					if (cells.get(i).energy < average) {
 						extra -= 1;
 						cells.get(i).energy += 1;
 					}
 				}
-				if(cells.get(i).y + 1 == this.y && extra > 0) {
+				if(cells.get(i).y + 1 == this.y && extra > 0 && cells.get(i).x == this.x) {
 					if (cells.get(i).energy < average) {
 						extra -= 1;
 						cells.get(i).energy += 1;
 					}
 				}
-				if(cells.get(i).y - 1 == this.y && extra > 0) {
+				if(cells.get(i).y - 1 == this.y && extra > 0 && cells.get(i).x == this.x) {
 					if (cells.get(i).energy < average) {
 						extra -= 1;
 						cells.get(i).energy += 1;

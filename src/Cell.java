@@ -7,7 +7,7 @@ import java.util.ArrayList;
 //
 // The Cell is the basic building block used in every organism
 // A default cell is always at the center of every organism, if the default cell dies the entire organism dies
-// The default cell is also used as a structure cell as outlined in 7.12 of the user story
+// The default cell is also used as a structure cell as outlined in 7.12 of the user stories
 
 public class Cell {
 	public int energy = 100;
