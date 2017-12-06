@@ -3,6 +3,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -25,6 +26,8 @@ import javafx.stage.Stage;
 
 
 public class GUI extends Application{
+	double x,y = 0;
+	Label info;
 	BorderPane pane;
 	GridPane grid;
 	GridPane editor;
@@ -68,11 +71,17 @@ public class GUI extends Application{
 		grid.add(disButton,1,0);
 		grid.setAlignment(Pos.CENTER);
 		grid.setVisible(false);
+		
 		pane.setLeft(grid);
 		
 		editor = new GridPane();
 		editor.setGridLinesVisible(true);
-		editor.getColumnConstraints().add(arg0)
+		
+		info = new Label();
+		info.setLayoutX(0);
+		info.setLayoutY(0);
+		info.setText("test");
+		info.setVisible(true);		
 		
 		//sim.loadState(); //loads the default state, which currently throws an error (that is caught) since there is no file for the default state
 		
@@ -88,7 +97,10 @@ public class GUI extends Application{
 		saveOrganism.setOnAction(e -> {sim.saveorg(txt.getText());});
 		edit.setOnAction(e -> {sim.changeState();System.out.println(sim.status); this.editor();});
 		
+		info.setOnMouseMoved(e -> {x = e.getX(); y = e.getY(); info.setLayoutX(x); info.setLayoutY(y);});
+		
 		cellButton.setOnAction(e -> {eCell = "cell";});
+		cellButton.setOnMouseEntered(e -> {info.setVisible(true);info.setText("testing testing 123!");info.setStyle("-fx-base: #82c3d2;");});
 		leafButton.setOnAction(e -> {eCell = "leaf";});
 		disButton.setOnAction(e -> {eCell = "dis";});
 		
