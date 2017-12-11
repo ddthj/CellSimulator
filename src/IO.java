@@ -20,8 +20,6 @@ import java.util.ArrayList;
 //TODO - figure out how to fix the not-so-random random errors
 
 public class IO {
-	@SuppressWarnings("unchecked")
-	
 	public Organism loadorg(String name){
 		name += ".org";
 		Organism temp = new Organism();
@@ -74,6 +72,7 @@ public class IO {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	public ArrayList<Organism> read(String name){ //read organisms (Simulation State) From file
 		name += ".state";
 		ArrayList<Organism> temp = new ArrayList<Organism>();

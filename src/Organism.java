@@ -1,4 +1,4 @@
-import java.sql.Array;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -11,7 +11,8 @@ import java.util.ArrayList;
 
 
 
-public class Organism {
+@SuppressWarnings("serial")
+public class Organism implements Serializable{
 	public ArrayList<Cell> cells; //cells in an organism are organized in a grid made of a 2D array
 	public int x,y,vx,vy; //x and y coordinates, and velocities
 	public int size; //used for collision detection

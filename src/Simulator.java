@@ -8,17 +8,21 @@ import java.util.ArrayList;
 
 
 public class Simulator {
-	
-	public int status = 0; //Paused/Playing/Editing, 0,1,-1 respectively 
-	public ArrayList<Organism> organisms;
+	IO io;
 	public Organism editing;
-	IO io = new IO();
+	public ArrayList<Organism> organisms;
+	public int status;
 	
-	
+	public Simulator() {
+		io = new IO();
+		this.status = 0; //Paused/Playing/Editing, 0,1,-1 respectively 
+		this.organisms = new ArrayList<Organism>();
+		this.editing = new Organism();
+	}
 	
 	public void tick() {
 		ArrayList<Organism> temp = new ArrayList<Organism>();
-		for(int i = 0; i < this.organisms.size(); i++){
+		for(int i = 0; i < organisms.size(); i++){
 			if (this.organisms.get(i).alive == true){
 				temp.add(this.organisms.get(i));
 			}
@@ -60,5 +64,18 @@ public class Simulator {
 		else {
 			this.status = 0;
 		}
+	}
+	public Organism makeOrg(int x,int y,ArrayList<Cell> cells,String name) {
+		Organism t = new Organism(x,y,cells,name);
+		return t;
+	}
+	public Organism makeOrg() {
+		return new Organism();
+	}
+	public void addOrg() {
+		organisms.add(editing);
+	}
+	public void addOrg(Organism t) {
+		this.organisms.add(t);
 	}
 }

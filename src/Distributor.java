@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
 //Distributor.java Class
@@ -7,12 +8,15 @@ import java.util.ArrayList;
 //The Distributor cell distributes energy evenly across neighboring cells
 //
 
-public class Distributor extends Cell{
+@SuppressWarnings("serial")
+public class Distributor extends Cell implements Serializable{
 	public Distributor(int x, int y) {
 		super(x, y);
+		super.color = new double[] {0.6784313725490196,0.403921568627451,0.3372549019607843};
 	}
 	@Override
 	public void tick(ArrayList<Cell>cells) {
+		super.color =  new double[] {0.6784313725490196,0.403921568627451,0.3372549019607843};
 		int sum = 0 + this.energy;
 		int num = 1;
 		
